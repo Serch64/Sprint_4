@@ -7,10 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.qaScooterPraktikumServices.model.MainPage;
 
+import static ru.qaScooterPraktikumServices.ChoosingBrowserClass.*;
 import static ru.qaScooterPraktikumServices.model.constants.locators.MainPageLocators.*;
 import static ru.qaScooterPraktikumServices.model.constants.expectedData.FaqExpectedData.*;
 
@@ -19,7 +18,6 @@ import static ru.qaScooterPraktikumServices.model.constants.expectedData.FaqExpe
 public class FaqTest {
     private static final String URL = "https://qa-scooter.praktikum-services.ru/";
     private static final String assertDescription = "Текст ответа в FAQ отличается от ожидаемого";
-    private WebDriver driver;
     private final By faqElement;
     private final By faqAnswer;
     private final String expectedText;
@@ -44,7 +42,7 @@ public class FaqTest {
     }
     @Before
     public void initDriverAndUrl() {
-        driver = new ChromeDriver();
+        createDriver(CHROME);
         driver.get(URL);
     }
     @Test

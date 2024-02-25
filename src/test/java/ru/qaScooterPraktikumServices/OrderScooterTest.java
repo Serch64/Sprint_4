@@ -7,13 +7,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.qaScooterPraktikumServices.model.MainPage;
 import ru.qaScooterPraktikumServices.model.OrderPage;
 import ru.qaScooterPraktikumServices.model.RentPage;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static ru.qaScooterPraktikumServices.ChoosingBrowserClass.*;
 import static ru.qaScooterPraktikumServices.model.constants.locators.MainPageLocators.*;
 import static ru.qaScooterPraktikumServices.model.constants.locators.OrderPageLocators.*;
 import static ru.qaScooterPraktikumServices.model.constants.locators.RentPageLocators.*;
@@ -24,7 +23,6 @@ public class OrderScooterTest {
     private static final String URL = "https://qa-scooter.praktikum-services.ru/";
     private static final String assertDescription = "Модальное окно с сообщением об успешном создании заказа не отобразилось";
     private static final org.hamcrest.Matcher<String> expectedText = containsString("Заказ оформлен");
-    private WebDriver driver;
     private final By orderButton;
     private final String name;
     private final String familyName;
@@ -61,7 +59,7 @@ public class OrderScooterTest {
     }
     @Before
     public void initDriverAndUrl() {
-        driver = new ChromeDriver();
+        createDriver(CHROME);
         driver.get(URL);
     }
     @Test
